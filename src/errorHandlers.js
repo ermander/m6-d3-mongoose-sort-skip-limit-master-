@@ -19,6 +19,7 @@ const genericErrorHandler = (err, req, res, next) => {
     // checks if another error middleware already sent a response
     res.status(err.httpStatusCode || 500).send(err.message)
   }
+  next(err)
 }
 
 module.exports = {
