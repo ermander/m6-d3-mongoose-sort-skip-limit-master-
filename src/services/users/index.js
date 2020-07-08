@@ -9,9 +9,9 @@ usersRouter.get("/", async (req, res, next) => {
   try {
     const query = q2m(req.query)
     const users = await UserSchema.find(query.criteria, query.options.fields)
-      .skip(query.options.skip)
-      .limit(query.options.limit)
-      .sort(query.options.sort)
+      .skip(query.options.skip) // Skippa i primi x risultati
+      .limit(query.options.limit) // Limita a x il numero di risultato
+      .sort(query.options.sort) // Decide l'ordine dei risultati
 
     res.send({
       data: users,
